@@ -1,2 +1,2 @@
-# progSistemasProyecto
+# progSistemasHilos
 documentación del proyecto Hilos
