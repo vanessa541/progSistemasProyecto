@@ -1,5 +1,7 @@
 # progSistemasHilos
+### Introducción (problema a resolver): En una sucursal de venta de peliculas en DVD les interesa tener un buscardor particular en donde puedan cosultar distintas peliculas, saber su sinopsis, los actores que salen en la pelicula y poder visualizar el poster de la misma. Desean visulaizar la información en una interfaz gráfica.
 
+## Metodologia 
 ### Programación concurrente
 #### Se conoce por programación concurrente a la rama de la informática que trata de las técnicas de programación que se usan para expresar el paralelismo entre tareas y para resolver los problemas de comunicación y sincronización entre procesos. El principal problema de la programación concurrente corresponde a no saber en que orden se ejecutan los programas (en especial los programas que se comunican). Se debe tener especial cuidado en que este orden no afecte el resultado de los programas.
 ### Hilos
