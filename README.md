@@ -1,7 +1,16 @@
 # progSistemasHilos
- Hilos
-### Programación concurrente: Se conoce por programación concurrente a la rama de la informática que trata de las técnicas de programación que se usan para expresar el paralelismo entre tareas y para resolver los problemas de comunicación y sincronización entre procesos. El principal problema de la programación concurrente corresponde a no saber en que orden se ejecutan los programas (en especial los programas que se comunican). Se debe tener especial cuidado en que este orden no afecte el resultado de los programas.
 
+### Programación concurrente
+#### Se conoce por programación concurrente a la rama de la informática que trata de las técnicas de programación que se usan para expresar el paralelismo entre tareas y para resolver los problemas de comunicación y sincronización entre procesos. El principal problema de la programación concurrente corresponde a no saber en que orden se ejecutan los programas (en especial los programas que se comunican). Se debe tener especial cuidado en que este orden no afecte el resultado de los programas.
+### Hilos
+#### Un hilo (en inglés “thread”) es la menor de las estructuras lógicas de programación que se ejecuta de forma secuencial por parte del planificador del S.O.
+#### Un hilo es un proceso del sistema operativo con características distintas de las de un proceso normal:
+#### Los hilos existen como subconjuntos de los procesos.
+#### Los hilos comparten memoria y recursos.
+#### Los hilos ocupan una dirección diferente en la memoria
+#### En Python 2.X se pueden crear hilos utilizando el módulo threads y en Python 3.X se pueden crear utilizando el módulo _threads. El módulo threading será utilizado para interactuar con el módulo _threads.
+### ¿Cuando implementar hilos? Cuando se quiera ejecutar una función al mismo tiempo que se ejecuta un programa. Cuando se crea software para servidores se quiere que el servidor no reciba solo una sino múltiples conexiones. Los hilos permiten completar varias tareas al mismo tiempo.
+### Adjunto enlace que lleva a la definicion de las funciones del modulo threading en phyton: https://unipython.com/hilos-python/  
 
 ## Comienzo de la interfaz gráfica....
 #### Comence dibujando como queria que se viera mi interfaz gráfica, teniendo un boceto de ella.
