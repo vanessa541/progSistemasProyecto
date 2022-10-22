@@ -1,8 +1,10 @@
 # Importar bibliotecas
+
+import json
+import requests
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QLineEdit, QPushButton, QPlainTextEdit, \
     QLabel
 from PyQt5.QtGui import QImage, QPixmap
-
 
 # Subclase QMainWindow
 class VentanaPrincipal(QMainWindow):
@@ -39,9 +41,13 @@ class VentanaPrincipal(QMainWindow):
         contenedor.setLayout(lytPrincipal)
         self.setCentralWidget(contenedor)
 
+
     def buscarTexto(self):
+
         cadena = self.lnedtTexto.text()
         print("Escrito: ", cadena)
+
+
 
 
 app = QApplication([])
