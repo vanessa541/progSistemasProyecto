@@ -12,7 +12,7 @@
 #### Los hilos ocupan una dirección diferente en la memoria
 #### En Python 2.X se pueden crear hilos utilizando el módulo threads y en Python 3.X se pueden crear utilizando el módulo _threads. El módulo threading será utilizado para interactuar con el módulo _threads.
 ### ¿Cuando implementar hilos? Cuando se quiera ejecutar una función al mismo tiempo que se ejecuta un programa. Cuando se crea software para servidores se quiere que el servidor no reciba solo una sino múltiples conexiones. Los hilos permiten completar varias tareas al mismo tiempo.
-### Adjunto enlace que lleva a la definicion de las funciones del modulo threading en phyton: https://unipython.com/hilos-python/  
+### Adjunto enlace que lleva a la definicion de las funciones del modulo threading en phyton: https://docs.python.org/es/3/library/threading.html 
 
 ## Comienzo de la interfaz gráfica....
 #### Comence dibujando como queria que se viera mi interfaz gráfica, teniendo un boceto de ella.
