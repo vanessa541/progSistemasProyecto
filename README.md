@@ -24,4 +24,10 @@
 #### En la siguiente captura es visible como logre agregar un poster de pelicula, de forma directa, aun me falta, implementar la busqueda.
 <img width="439" alt="image" src="https://user-images.githubusercontent.com/111407329/196538232-01df1528-5a36-4362-ae6a-c509e0b1d1c8.png">
 
+## Interfaz funcionando...
+#### Ingresar el nombre de la pelicula deseada y presionar el 'Buscar'
+![Captura de pantalla (34)](https://user-images.githubusercontent.com/111407329/199882851-36f10e0e-44a6-40e0-a415-396bfcdf43f9.png)
+#### Se despligan 3 poster de los titulos relacionados con su respectivo resumen 
+![Captura de pantalla (35)](https://user-images.githubusercontent.com/111407329/199883115-b1716833-0776-41fe-a167-24e08ea77b75.png)
+
 
