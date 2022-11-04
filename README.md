@@ -29,5 +29,7 @@
 ![Captura de pantalla (34)](https://user-images.githubusercontent.com/111407329/199882851-36f10e0e-44a6-40e0-a415-396bfcdf43f9.png)
 #### Se despligan 3 poster de los titulos relacionados con su respectivo resumen 
 ![Captura de pantalla (35)](https://user-images.githubusercontent.com/111407329/199883115-b1716833-0776-41fe-a167-24e08ea77b75.png)
+#### En la siguiente imagen se muestra la salida con la busqueda de dos palabras
+![Captura de pantalla (36)](https://user-images.githubusercontent.com/111407329/199885299-12ff1658-b13d-4b31-ad04-ca34dd8ab285.png)
 
 
