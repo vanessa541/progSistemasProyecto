@@ -7,10 +7,14 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QLi
 from PyQt5.QtGui import QImage, QPixmap
 import threading
 
+
 def custom_hook(args):
     print(f'Thread failed: {args.exc_value}')
 
+
 # Subclase QMainWindow
+
+
 class VentanaPrincipal(QMainWindow):
 
     def __init__(self):
@@ -45,29 +49,62 @@ class VentanaPrincipal(QMainWindow):
         for i in palabras:
             self.get_movies(i)
 
-    def get_movies(self, palabra):
-        url_servicio = "http://clandestina-hds.com:80/movies/title?search="
-        r = requests.get(url_servicio + palabra)
-        peliculas_data = r.json()
+    def split_texto(self):
+        peliculas = []
+        palabras = []
         index = 0
-        limit = 4
-        short_data_peliculas = peliculas_data['results'][:3]
-        for pelicula in short_data_peliculas:
-            print("La pelicula de nombre: {} \n Tiene una URL de imagen: {} \n Resumen :{} \n Aritstas: {}" .format(pelicula['title'],
-                                                                                    pelicula["image"],
-                                                                                    pelicula['plot'],
-                                                                                    pelicula['starList']))
-            image = Poster(pelicula["image"])
-            resume = QTextEdit()
-            resume.setText(pelicula['plot'])
-            self.lytPrincipal.addWidget(image)
-            self.lytPrincipal.addWidget(resume)
-            self.contenedor.setLayout(self.lytPrincipal)
-            self.setCentralWidget(self.contenedor)
-            index = index + 1
-            if index == limit:
-                break
+        threading.excepthook = custom_hook
+        lista = self.inlineText.text()
+        for palabras in lista:
+            palabras = lista.split(",")
+        thread_lst = [threading.Thread(target=self.get_movie, args=(k, index)) for k in palabras]
+        for i in thread_lst:
+            i.start()
+            index += 3
+            print("Start")
+        for i in thread_lst:
+            peliculas.append(i.join())
+            print("Return")
+        self.resize(750, 800)
+        print(self.data_movies)
+        # self.draw_movies(self.data_movies, index)
 
+
+    def get_movies(self, palabra):
+            url_servicio = "http://clandestina-hds.com:80/movies/title?search="
+            r = requests.get(url_servicio + palabra)
+            peliculas_data = r.json()
+            index = 0
+            limit = 4
+            short_data_peliculas = peliculas_data['results'][:4]
+            for pelicula in short_data_peliculas:
+                print("La pelicula de nombre: {} \n Tiene una URL de imagen: {} \n Resumen :{} \n Aritstas: {}" .format(pelicula['title'],
+                                                                                        pelicula["image"],
+                                                                                        pelicula['plot'],
+                                                                                        pelicula['starList']))
+                if 0 <= index < 4:
+                    self.leftcolumna.addWidget(image)
+                    self.leftcolumna.addWidget(resume)
+                if 4 <= index < 8:
+                    self.centercolumna.addWidget(image)
+                    self.centercolumna.addWidget(resume)
+                if index >= 8:
+                    self.rightcolumna.addWidget(image)
+                    self.rightcolumna.addWidget(resume)
+                index += 1
+                print(index)
+                self.setCentralWidget(self.contenedor)
+
+                # image = Poster(pelicula["image"])
+                # resume = QTextEdit()
+                # resume.setText(pelicula['plot'])
+                # self.lytPrincipal.addWidget(image)
+                # self.lytPrincipal.addWidget(resume)
+                # self.contenedor.setLayout(self.lytPrincipal)
+                # self.setCentralWidget(self.contenedor)
+                # index = index + 1
+                # if index == limit:
+                #     break
 
     def serch_text(self):
         cursor = self.texto.textCursor()
@@ -76,6 +113,7 @@ class VentanaPrincipal(QMainWindow):
         cadena = self.lnedtTexto.text()
         escrito = self.texto.find(cadena)
         print("Película: ", escrito)
+
 
 class Poster(QLabel):
     image_url: str
