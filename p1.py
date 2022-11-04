@@ -5,7 +5,10 @@ import requests
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QLineEdit, QPushButton, QPlainTextEdit, \
     QLabel, QTextEdit, QVBoxLayout
 from PyQt5.QtGui import QImage, QPixmap
+import threading
 
+def custom_hook(args):
+    print(f'Thread failed: {args.exc_value}')
 
 # Subclase QMainWindow
 class VentanaPrincipal(QMainWindow):
@@ -16,25 +19,20 @@ class VentanaPrincipal(QMainWindow):
         self.resize(2000, 1000)
         self.contenedor = QWidget()
         self.lytPrincipal = QGridLayout()
-
         lblBusca = QLabel("Palabras: ")
         self.lnedtTexto = QLineEdit()
         self.btnBusca = QPushButton("Buscar")
         self.btnBusca.clicked.connect(self.split_text)
-
         self.texto = QPlainTextEdit()
-
-        leftcolumna = QWidget()
-        centercolumna = QWidget()
-        rightcolumna = QWidget()
-
+        self.leftcolumna = QVBoxLayout()
+        self.centercolumna = QVBoxLayout()
+        self.rightcolumna = QVBoxLayout()
         self.lytPrincipal.addWidget(lblBusca, 0, 0)
         self.lytPrincipal.addWidget(self.lnedtTexto, 0, 1)
         self.lytPrincipal.addWidget(self.btnBusca, 0, 2)
-        self.lytPrincipal.addWidget(leftcolumna, 1, 0)
-        self.lytPrincipal.addWidget(centercolumna, 1, 1)
-        self.lytPrincipal.addWidget(rightcolumna, 1, 2)
-
+        self.lytPrincipal.addLayout(self.leftcolumna, 1, 0)
+        self.lytPrincipal.addLayout(self.centercolumna, 1, 1)
+        self.lytPrincipal.addLayout(self.rightcolumna, 1, 2)
         self.contenedor.setLayout(self.lytPrincipal)
         self.setCentralWidget(self.contenedor)
 
@@ -46,7 +44,6 @@ class VentanaPrincipal(QMainWindow):
             palabras = lista.split(",")
         for i in palabras:
             self.get_movies(i)
-
 
     def get_movies(self, palabra):
         url_servicio = "http://clandestina-hds.com:80/movies/title?search="
@@ -72,7 +69,6 @@ class VentanaPrincipal(QMainWindow):
                 break
 
 
-
     def serch_text(self):
         cursor = self.texto.textCursor()
         cursor.setPosition(0)
@@ -90,13 +86,8 @@ class Poster(QLabel):
         image = QImage()
         image.loadFromData(requests.get(self.image_url).content)
         pixmap = QPixmap(image)
-        pixmap = pixmap.scaledToWidth(200)
+        pixmap = pixmap.scaledToWidth(300)
         self.setPixmap(pixmap)
-
-    # def mouseDoubleClickEvent(self, event):
-    #     if self.video_url is not None and self.video_url is not "":
-    #         url = QUrl(self.video_url)
-    #         QDesktopServices.openUrl(url)
 
 
 app = QApplication([])
