@@ -59,8 +59,8 @@ class VentanaPrincipal(QMainWindow):
         r = requests.get(url_servicio + palabra)
         peliculas_data = r.json()
         index = 0
-        limit = 3
-        short_data_peliculas = peliculas_data['results'][:3]
+        limit = 4
+        short_data_peliculas = peliculas_data['results'][:4]
         for pelicula in short_data_peliculas:
             print("La pelicula de nombre: {} \n Tiene una URL de imagen: {} \n Resumen :{} \n Aritstas: {}" .format(pelicula['title'],
                                                                                     pelicula["image"],
